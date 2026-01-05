@@ -1,0 +1,53 @@
+1. Xử lý outlier
+- Input:
+  - Numeric/continuous columns: IQR
+  - Categorical columns: Low-frequency (ít xuất hiện)
+- Output: Dataset sau khi phát hiện & xử lý outlier (đã “sạch” theo rule cấu hình)
+- Options/Cách thức xử lý:
+  - Remove: loại bỏ bản ghi chứa outlier
+  - Replace: thay thế bằng giá trị mới (ví dụ median/mean/constant)
+  - Trim/Clip: cắt ngưỡng trên/dưới để đưa về khoảng hợp lệ
+
+2. Chuẩn hóa kiểu dữ liệu (Datatype)
+- Input: Dataset + cấu hình mapping kiểu dữ liệu
+- Output: Dataset với dtype đúng chuẩn theo schema
+- Options/Cách thức:
+  - Chuẩn hóa timestamp (format, timezone, parse lỗi)
+  - Type casting theo cấu hình cột: chọn các cột chuyển từ type1 -> type2
+    (ví dụ String -> Categorical, String -> Int/Float, ...)
+
+3. Kết hợp nhiều bảng dữ liệu (Join/Merge) theo key
+- Input:
+  - Danh sách bảng nguồn (table/source selection)
+  - Key dùng để kết hợp (join keys) + kiểu join (inner/left/...) nếu cần
+- Output: Một dataset hợp nhất từ nhiều bảng theo key đã chọn
+- Options/Cách thức:
+  - Cho phép chọn bảng nguồn tham gia join
+  - Cho phép chọn key và cấu hình join theo từng cặp bảng
+
+4. Xử lý cột text (String normalization)
+- Input: Text columns + rule cấu hình
+- Output: Text đã được chuẩn hóa theo rule
+- Options/Cách thức:
+  - Add prefix: thêm tiền tố
+  - Add suffix: thêm hậu tố
+  - Split: string -> list of strings (theo delimiter/pattern)
+
+5. Xử lý giá trị thiếu (NaN / Missing values)
+- Input: Dataset + chiến lược fill NaN theo cột/nhóm cột
+- Output: Dataset sau khi impute missing values
+- Options/Cách thức:
+  - AVG/Mean (hoặc median nếu cấu hình)
+  - Latest value (forward fill / last observation carried forward)
+  - Default value (giá trị mặc định theo schema)
+  - Imputation model: dùng mô hình dự đoán để điền giá trị thiếu
+
+6. Phân cụm target time-series theo độ khó/noise/ngẫu nhiên
+- Input: Tập các chuỗi time-series (targets) + tiêu chí/metric đánh giá độ khó/noise
+- Output: Nhãn cụm cho mỗi target + danh sách target theo cụm để chọn trên UI
+- Options/Cách thức (nhóm đầu ra cho UI):
+  - (A) Easy: dễ dự đoán
+  - (B) Hard/Noisy: khó hoặc nhiều nhiễu
+  - (C) Clear distribution: có phân phối xác suất rõ ràng
+- Giao diện: cho phép người dùng chọn mục tiêu đầu ra A/B/C để tách pipeline/flow xử lý tiếp theo
+
