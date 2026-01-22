@@ -73,6 +73,7 @@ ts_clustering/
 │   │   ├── clustering.py          # clustering algorithms
 │   │   ├── validation.py          # silhouette, DBI, dispersion
 │   │   └── explanation.py         # summary_stats, boxplot, ANOVA, MI, overlap analysis
+│   ├──refinement.py           # analyze result & propose optimized config
 │   ├── pipeline.py            # orchestrate the steps using classes/functions
 │   ├── utils/                     # outlier_detection
 │   └── results/                   # store params, validation & explaination result
@@ -197,7 +198,7 @@ Refinement continues until:
 - Differences are explainable
 - Results are stable under small perturbations
 
-Refinement is executed by re-running the same pipeline with modified config.
+Refinement result with be analytical report & proposed config. It will be executed by re-running the same pipeline with modified config.
 
 Example:
 
