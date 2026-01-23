@@ -51,8 +51,6 @@ Refinement
 ## Repository structure
 
 ```
-ts_preprocessing/
-...                         # others preprocessing components
 ├── README.md
 ├── requirements.txt
 ├── setup.py
@@ -60,23 +58,24 @@ ts_preprocessing/
 │   └── default.yaml
 ├── data/
 │   ├── raw/                  # raw time‑series 
-│   ├── features/          # cleaned & transformed features
-│   └── intermediate/         # results of each step (e.g., PCA embeddings)
-├── clustering_component/
-│   ├── data_loader.py        # functions to load tsfeature data
-│   ├── feature
-│   │   ├── compute_features.py
-│   │   └──feature_hygiene.py       # hygiene & validation methods
-│   ├── dimensionality/
-│   │   └── pca.py             # PCA fitting & loadings interpretation
-│   ├── clustering/
-│   │   ├── clustering.py          # clustering algorithms
-│   │   ├── validation.py          # silhouette, DBI, dispersion
-│   │   └── explanation.py         # summary_stats, boxplot, ANOVA, MI, overlap analysis
-│   ├──refinement.py           # analyze result & propose optimized config
-│   ├── pipeline.py            # orchestrate the steps using classes/functions
-│   ├── utils/                     # outlier_detection
-│   └── results/                   # store params, validation & explaination result
+│   └── features/             # features
+ts_preprocessing/
+...                           # others preprocessing components
+│   ├── clustering_component/
+│   │   ├── data_loader.py        # functions to load tsfeature data
+│   │   ├──feature
+│   │   │   ├── compute_features.py
+│   │   │   └──feature_hygiene.py       # hygiene & validation methods
+│   │   ├── dimensionality/
+│   │   │   └── pca.py             # PCA fitting & loadings interpretation
+│   │   ├── clustering/
+│   │   │   ├── clustering.py          # clustering algorithms
+│   │   │   ├── validation.py          # silhouette, DBI, dispersion
+│   │   │   └── explanation.py         # summary_stats, boxplot, ANOVA, MI, │   │   │   ├── analysis/
+│   │   │   ├──refinement.py           # analyze result & optimized config
+│   │   ├── pipeline.py            # orchestrate the steps 
+│   │   ├── utils/                     # outlier_detection
+│   │   └── results/                   # store params, validation & explaination 
 └── tests/
 
 ````
