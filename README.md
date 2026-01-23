@@ -1,6 +1,6 @@
 # Time Series Clustering Module
 
-This repository implements a **time series clustering component**, designed to be used as the final stage of preprocessing in a larger forecasting pipeline.
+This module implements a **time series clustering component**, designed to be used as the final stage of preprocessing repository in a larger forecasting pipeline.
 
 The goal is to group series having the same characteristics. Clusters will be used to:
 - Decide local vs global model.
@@ -51,16 +51,16 @@ Refinement
 ## Repository structure
 
 ```
-
-ts_clustering/
+ts_preprocessing/
+...                         # others preprocessing components
 ├── README.md
 ├── requirements.txt
 ├── setup.py
 ├── config/
 │   └── default.yaml
 ├── data/
-│   ├── raw/                  # raw time‑series or tsfeatures (not versioned)
-│   ├── processed/            # cleaned & transformed features
+│   ├── raw/                  # raw time‑series 
+│   ├── features/          # cleaned & transformed features
 │   └── intermediate/         # results of each step (e.g., PCA embeddings)
 ├── clustering_component/
 │   ├── data_loader.py        # functions to load tsfeature data
